@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Device Verification</title>
+  <!-- ClientJS Library -->
+  <script src="https://cdn.jsdelivr.net/npm/clientjs@0.2.1/dist/client.min.js"></script>
+
+  <style>
+    /* Estilo para o JSON exibido */
+    pre {
+      background-color: #f4f4f4;
+      padding: 10px;
+      border-radius: 5px;
+      font-size: 14px;
+      line-height: 1.4;
+    }
+  </style>
+</head>
+
+<body>
+  <pre id="deviceDataDisplay"></pre> <!-- Onde o JSON formatado será exibido -->
+</body>
+
+<script>
+  // Inicializar o ClientJS e capturar informações do dispositivo
+  const client = new ClientJS();
+
+  const deviceData = {
+    fingerprint: client.getFingerprint(),
+    engine: client.getEngine(),
+    engineVersion: client.getEngineVersion(),
+    device: client.getDevice(),
+    browser: client.getBrowser(),
+    browserVersion: client.getBrowserMajorVersion(),
+    os: client.getOS(),
+    osVersion: client.getOSVersion(),
+    cpu: client.getCPU(),
+    userAgent: client.getUserAgent(),
+    screenResolution: client.getScreenPrint(),
+    plugins: client.getPlugins(),
+    timezone: client.getTimeZone(),
+    language: client.getLanguage()
+
+  };
+  // Exibir deviceData formatado como JSON no elemento <pre> com id "deviceDataDisplay"
+  document.getElementById("deviceDataDisplay").textContent = JSON.stringify(deviceData, null, 2);
+
+</script>
+
+</html>
